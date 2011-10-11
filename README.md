@@ -24,6 +24,6 @@ Para esto tienes que ir al **Admin, System (sistema) -> Configuration (configura
 
 ###4.- Desactiva el Cache.
 
-Para para desabilitar el _cache_ **Admin, System (sistema) -> Configuration (Gestión de Cache)** desactivamos `Translation files`.
+Para para desabilitar el _cache_ **Admin, System (sistema) -> Cache Management (Gestión de Cache)** desactivamos `Translation files`.
 
 
