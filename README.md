@@ -13,9 +13,10 @@ Instrucciones Como utilizar.
 1.- Descarga el paquete.
 ---------------------------------------------------------------------------------
 
-Usted puede descargar la versión mas reciente de esta traduccion desde la siguiente URL:
+Usted puede descargar la versión mas reciente de esta traduccion desde la siguientes URLs:
 
-><https://github.com/mundoSICA/Magento_1.6.x_translation_es_MX/zipball/master>
+<a href="https://github.com/mundoSICA/Magento_1.6.x_translation_es_MX/tarball/master" class="button icon arrowdown">Download as <b>.tar.gz</b></a>
+<a href="https://github.com/mundoSICA/Magento_1.6.x_translation_es_MX/zipball/master" class="button icon arrowdown">Download as <b>.zip</b></a>
 
 2.- Agregando los archivos a nuestro Magento.
 ---------------------------------------------------------------------------------
