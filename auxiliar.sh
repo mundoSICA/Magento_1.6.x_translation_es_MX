@@ -45,10 +45,10 @@ DESCRIPCIÓN
                Ordena por orden alfabetico al tiempo que elimina las lineas repetidas.
 	  
 	  -instalar  \"ruta de instalación\"
-               copia archivo por archivo en la ruta de instalación los archivos csv.
+               Copia los archivos(csv) en la carpeta app de la ruta instalación.
 	  
 	  -buscar  \"Cadena buscada\"
-               Busca en los archivos csv la cadena buscada mostrando archivo/linea donde fue localizada.
+              Busca en los archivos .csv la cadena pasada como argumento mostrando archivo/linea donde fue localizada.
 Ejemplos
 	  ./auxiliar.sh -ordenar
 	          Ordena las lineas de los archivos en la ruta donde nos localicemos.
