@@ -84,6 +84,11 @@ Para facilitar el desarrollo de la tradducción hemos desarrollado un guión(_sc
 
 	./auxiliar.sh -buscar "cadena buscada"
 
+ - **Sin traducción**: Muestra los archivos en donde existan cadenas que no han sido traducidas,Asi como dichas cadenas y el numero de linea en donde se encuentran. Esto lo realiza cachando la repetición de la cadena p.e.
+> "alguna cadena","alguna cadena"
+
+	./auxiliar.sh -sin_traduccion
+     
 **Nota**: El script esta desarrollado para _Linux_ sin embargo usted lo puede correr sobre Windows instalando una shell p.e. **Cygwin** (mayor información <http://www.cygwin.com/> ).
 
 
