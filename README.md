@@ -74,20 +74,20 @@ Para facilitar el desarrollo de la tradducción hemos desarrollado un guión(_sc
 
  - **Ordenar**: Ordena por orden alfabetico al tiempo que elimina las lineas repetidas.
 
-	./auxiliar.sh -ordenar
+		./auxiliar.sh -ordenar
 
  - **Instalación**: Copia los archivos(csv) en la carpeta app de la ruta instalación.
 
-	./auxiliar.sh -instalar /var/www/mi_directorio_magento/
+		./auxiliar.sh -instalar /var/www/mi_directorio_magento/
 	 
  - **Buscar**: Busca en los archivos `.csv` la cadena pasada como argumento mostrando archivo/linea donde fue localizada.
 
-	./auxiliar.sh -buscar "cadena buscada"
+		./auxiliar.sh -buscar "cadena buscada"
 
  - **Sin traducción**: Muestra los archivos en donde existan cadenas que no han sido traducidas,Asi como dichas cadenas y el numero de linea en donde se encuentran. Esto lo realiza cachando la repetición de la cadena p.e.
 > "alguna cadena","alguna cadena"
 
-	./auxiliar.sh -sin_traduccion
+		./auxiliar.sh -sin_traduccion
      
 **Nota**: El script esta desarrollado para _Linux_ sin embargo usted lo puede correr sobre Windows instalando una shell p.e. **Cygwin** (mayor información <http://www.cygwin.com/> ).
 
