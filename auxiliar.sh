@@ -57,11 +57,14 @@ ${light}DESCRIPCIÓN${NC}
 	  ${yellow}-buscar  \"Cadena buscada\"${NC}
               Busca en los archivos .csv la cadena pasada como argumento mostrando archivo/linea donde fue localizada.
               
-          ${yellow}-sin_traduccion${NC}
+	  ${yellow}-sin_traduccion${NC}
               Muestra los archivos en donde existan cadenas que no han sido traducidas,
               Asi como dichas cadenas y el numero de linea en donde se encuentran.
               Esto lo realiza cachando la repetición de la cadena p.e.
                    \"alguna cadena\",\"alguna cadena\"
+
+	  ${yellow}-ayuda${NC}
+              Muestra esta página
 
 ${light}Ejemplos${NC}
 	  ${cyan}./auxiliar.sh -ordenar${NC}
@@ -75,6 +78,9 @@ ${light}Ejemplos${NC}
 
 	  ${cyan}./auxiliar.sh -sin_traduccion${NC}
 	          Mostrando los archivos y sus cadenas que no han sido traducidas.
+
+	  ${cyan}./auxiliar.sh -ayuda${NC}
+	          Muestra la información de este script.
 ";
 }
 
@@ -154,21 +160,28 @@ case "${1}" in
 			
 			exit
 		fi
+		#Aqui la intencion es concatenar los demas argumentos que estamos recibiendo.
+		# para evaluarla de la forma: ${2} ${3} ... ${n}
 		#export cadena='${2}'
 		#for (( i=3; i<=$#; i++ )); do
-		#  export cadena+=' ${'$i'}'
+		#  export cadena+=' ${'$i'}';
 		#done
-		# echo `eval $cadena`
+		#echo $cadena;
+		# echo `eval $cadena`;
 		#exit;
 		buscar "${2}"
-		exit 0
+		exit 0;
 		;;
 	"-sin_traduccion")
 		sin_traduccion
 		;;
+	"-ayuda")
+		manual
+		exit 0;
+		;;
 	*)
 		manual
-		echo $1
+		echo -e ${red}Argumento invalido por favor revise la documentación.${NC};
 		exit 1
 	   ;;
 esac
