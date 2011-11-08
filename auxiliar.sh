@@ -27,45 +27,59 @@
 #          `'         `'
 ##########################################################################################
 
-
+export LANG=es_MX.utf8
+cyan='\e[0;36m'
+light='\e[1;36m'
+red="\e[0;31m"
+yellow="\e[0;33m"
+white="\e[0;37m"
+NC='\e[0m'
+	
 function manual()
 {
-	echo -e "NOMBRE
+	echo -e "${light}NOMBRE${NC}
        auxiliar - Auxiliar en el manejo de los archivos de traducción.
 
-SINOPSIS
-       auxiliar  [-ordenar] [-instalar \"ruta de instalación\"]  [-buscar \"cadena buscada\"]
+${light}SINOPSIS${NC}
+       auxiliar  [-ordenar] [-instalar \"ruta de instalación\"]  [-buscar \"cadena buscada\"] [-sin_traduccion]
 
-DESCRIPCIÓN
+${light}DESCRIPCIÓN${NC}
 	  Auxiliar en el manejo de los archivos de traducción.
 	  
 	  Las opciones que este script acepta son las siguientes:
 	  
-	  -ordenar 
+	  ${yellow}-ordenar${NC}
                Ordena por orden alfabetico al tiempo que elimina las lineas repetidas.
 	  
-	  -instalar  \"ruta de instalación\"
+	  ${yellow}-instalar  \"ruta de instalación\"${NC}
                Copia los archivos(csv) en la carpeta app de la ruta instalación.
 	  
-	  -buscar  \"Cadena buscada\"
+	  ${yellow}-buscar  \"Cadena buscada\"${NC}
               Busca en los archivos .csv la cadena pasada como argumento mostrando archivo/linea donde fue localizada.
-Ejemplos
-	  ./auxiliar.sh -ordenar
+              
+          ${yellow}-sin_traduccion${NC}
+              Muestra los archivos en donde existan cadenas que no han sido traducidas,
+              Asi como dichas cadenas y el numero de linea en donde se encuentran.
+              Esto lo realiza cachando la repetición de la cadena p.e.
+                   \"alguna cadena\",\"alguna cadena\"
+
+${light}Ejemplos${NC}
+	  ${cyan}./auxiliar.sh -ordenar${NC}
 	          Ordena las lineas de los archivos en la ruta donde nos localicemos.
 
-	  ./auxiliar.sh -instalar /var/www/mi_directorio_magento/
+	  ${cyan}./auxiliar.sh -instalar /var/www/mi_directorio_magento/${NC}
 	          Instala los archivos de traduccion en la carpeta /var/www/mi_directorio_magento/
 
-	  ./auxiliar.sh -buscar \"cadena buscada\"
+	  ${cyan}./auxiliar.sh -buscar \"cadena buscada\"${NC}
 	          Busca  \"cadena buscada\" en los archivos csv.
+
+	  ${cyan}./auxiliar.sh -sin_traduccion${NC}
+	          Mostrando los archivos y sus cadenas que no han sido traducidas.
 ";
 }
 
 function ordenar()
 {
-	light='\e[1;36m'
-	yellow="\e[0;33m"
-	NC='\e[0m'
 	export num=0;
 	for file in $(find . -iregex '.*\.csv$' | sort)
         do
@@ -91,10 +105,25 @@ function buscar()
 	grep --color -RHns "^\"${1}" app
 }
 
+function sin_traduccion()
+{
+	export num=0;
+	for file in $(find . -iregex '.*\.csv$' | sort)
+        do
+			grep -Eq '"(.*)","(\1)"' ${file};
+			if [ $? -eq 0 ]
+			then
+				echo -e ${light}Archivo ${num}${NC}  ${yellow}${file}${NC};
+				grep --color -Ehn '"(.*)","(\1)"' ${file};
+				export num=`expr $num '+' 1`;
+			fi
+	done
+}
+
 if [ $# -lt 1 ]
 then
 	manual
-	echo 'numero de argumentos invalidos';
+	echo -e ${red}numero de argumentos invalidos${NC};
 	exit
 fi
 
@@ -133,6 +162,9 @@ case "${1}" in
 		#exit;
 		buscar "${2}"
 		exit 0
+		;;
+	"-sin_traduccion")
+		sin_traduccion
 		;;
 	*)
 		manual
