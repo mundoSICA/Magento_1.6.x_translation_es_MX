@@ -108,7 +108,8 @@ function instalar()
 
 function buscar()
 {
-	grep --color -RHns "^\"${1}" app
+	export cadena_a_buscar=`echo ${@} | sed -r "s/-buscar\s+//"`
+	grep --color -REHns "^\"${cadena_a_buscar}" app
 }
 
 function sin_traduccion()
@@ -160,16 +161,7 @@ case "${1}" in
 			
 			exit
 		fi
-		#Aqui la intencion es concatenar los demas argumentos que estamos recibiendo.
-		# para evaluarla de la forma: ${2} ${3} ... ${n}
-		#export cadena='${2}'
-		#for (( i=3; i<=$#; i++ )); do
-		#  export cadena+=' ${'$i'}';
-		#done
-		#echo $cadena;
-		# echo `eval $cadena`;
-		#exit;
-		buscar "${2}"
+		buscar ${@}
 		exit 0;
 		;;
 	"-sin_traduccion")
